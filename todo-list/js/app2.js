@@ -1,12 +1,3 @@
-    // var input = document.getElementById("input");
-    // var button = document.getElementById("enter");
-    // console.log(input);
-    // console.log(button);
-
-    // document.getElementById("enter").addEventListener('click', function() {
-    //     console.log("working");
-    // });
-
 var button = document.getElementById("submitBtn");
 var todo = document.getElementById("inp");
 button.addEventListener("click", submitForm);

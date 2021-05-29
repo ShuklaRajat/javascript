@@ -29,15 +29,15 @@ function checkOrDelete(e){
 
     if(e.target.name == 'checkButton'){
         
-        document.querySelector("button").classList[0].toggle("done");
-        // let item = e.target.parentNode;
+        // document.querySelector("button").classList[0].toggle("done");
+        let item = e.target.parentNode;
 
-        // if(item.style.textDecoration == 'line-through'){
-        //     item.style.textDecoration = 'none';
-        // }
-        // else {
-        //     item.style.textDecoration = 'line-through'; 
-        // }
+        if(item.style.textDecoration == 'line-through'){
+            item.style.textDecoration = 'none';
+        }
+        else {
+            item.style.textDecoration = 'line-through'; 
+        }
 
     }
     if(e.target.name == 'deleteButton'){
