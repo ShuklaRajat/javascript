@@ -1,27 +1,36 @@
-var button = document.getElementById("submitBtn");
+var submitButton = document.getElementById("submitBtn");
 var todo = document.getElementById("inp");
-button.addEventListener("click", submitForm);
 
 function submitForm(){
     event.preventDefault();
-
-    let li = document.createElement("li");
-    li.innerHTML = `
-    <span class="todo-item">${todo.value}</span>
-    <button name="checkButton" id="check" onclick="checkOrDelete(event)"><i class="fas fa-check-square"></i></button>
-    <button name="deleteButton" onclick="checkOrDelete(event)"><i class="fas fa-trash"></i></button>
-    `;
-    li.classList.add('todo-list-item');
-    let ul = document.querySelector("ul");
-    ul.appendChild(li);
+    if(todo.value != '') {
+        let li = document.createElement("li");
+        //give id
+        li.innerHTML = `
+        <span id="todo-item" class = "todo-class" >${todo.value}</span>
+        <button name="checkButton" id="check"><i class="fas fa-check-square"></i></button>
+        <button name="deleteButton" id="delete"><i class="fas fa-trash"></i></button>
+        `;
+        li.classList.add('todo-list-item');
+        let ul = document.querySelector("ul");
+        ul.appendChild(li);
+        todo.value = '';
+        checkFunction();
+    }
 }
 
-var check_ = document.getElementById("check");
-check_.addEventListener("click", checkFunction);
+submitButton.addEventListener("click", submitForm);
 
 function checkFunction(){
     event.preventDefault();
     console.log("checkFunction");
-    event.target.getElementbyClass("todo-item").toggle("done");
+    var checkButton = document.getElementById("check"); 
+    checkButton.addEventListener("click", lineThroughFunc);
+}
+
+function lineThroughFunc(){
+    console.log("lineThroughFunc");
+    var spanVal = document.getElementById("todo-item");
+    spanVal.classList.toggle("done");
 }
 
