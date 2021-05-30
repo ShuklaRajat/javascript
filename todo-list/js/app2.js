@@ -1,14 +1,15 @@
-var submitButton = document.getElementById("submitBtn");
-var todo = document.getElementById("inp");
+let submitButton = document.getElementById("submitBtn");
+let todo = document.getElementById("inp");
+let clearAll = document.getElementById("clearAll");
 
-function submitForm(){
+const submitForm = () => {
     event.preventDefault();
     if(todo.value != '') {
         let li = document.createElement("li");
         li.innerHTML = `
         <span id="todo-item" class = "todo-class" >${todo.value}</span>
         <button name="checkButton" id="check" onclick="checkFunction(event)"><i class="fas fa-check-square"></i></button>
-        <button name="deleteButton" id="delete"><i class="fas fa-trash"></i></button>
+        <button name="deleteButton" id="delete" onclick="deleteFunction(event)"><i class="fas fa-trash"></i></button>
         `;
         li.classList.add('todo-list-item');
         let ul = document.querySelector("ul");
@@ -17,24 +18,29 @@ function submitForm(){
     }
 }
 
-submitButton.addEventListener("click", submitForm);
-
-function checkFunction(e){
+const checkFunction = (e) => {
     let checkButton = e.target;
-    console.log("checkFunction");
     checkButton.addEventListener("click", lineThroughFunc(e, checkButton));
 }
 
-function lineThroughFunc(e, checkButton){
-    console.log("lineThroughFunc");
+const lineThroughFunc = (e, checkButton) => {
     let spanVal = e.target.parentNode;
     spanVal.classList.toggle("done");
 }
 
+const deleteFunction = (e) => {
+    let liParent = e.target.parentNode;
+    liParent.remove();
+}
 
+const clearAllToDo = () => {
+    let ulTag = document.querySelector(".todoListClass");
+    ulTag.innerHTML = "";
+}
 
+submitButton.addEventListener("click", submitForm);
 
-
+clearAll.addEventListener("click", clearAllToDo);
 
 
 
