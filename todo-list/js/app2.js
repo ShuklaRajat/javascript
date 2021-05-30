@@ -5,7 +5,6 @@ function submitForm(){
     event.preventDefault();
     if(todo.value != '') {
         let li = document.createElement("li");
-        //give id
         li.innerHTML = `
         <span id="todo-item" class = "todo-class" >${todo.value}</span>
         <button name="checkButton" id="check"><i class="fas fa-check-square"></i></button>
